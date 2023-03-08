@@ -7,6 +7,6 @@
     />
     <com.adobe.cq.wcm.core.components.internal.services.pdfviewer.PdfViewerCaConfig
         jcr:primaryType="nt:unstructured"
-        clientId="{your_cliend_id}"
+        clientId=".pdf_viewer_cliend_id"
         reportSuiteId=""/>
 </jcr:root>
