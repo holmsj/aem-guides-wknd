@@ -87,25 +87,40 @@
                     <failOnError>true</failOnError>
                 </configuration>
             </plugin>
-            <!-- <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <tasks>
-                                <replace file="target/jcr_root/conf/wknd/_sling_configs/.content.xml" token=".pdf_viewer_cliend_id" value="${env.PDF_CLIENTID}" />
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin> -->
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>cmBuild</id>
+            <activation>
+                  <property>
+                        <name>env.CM_BUILD</name>
+                  </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-antrun-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>prepare-package</phase>
+                                    <configuration>
+                                        <tasks>
+                                            <replace file="src/main/content/jcr_root/conf/wknd/_sling_configs/.content.xml" token=".pdf_viewer_cliend_id" value="${env.PDF_CLIENTID}" />
+                                        </tasks>
+                                    </configuration>
+                                    <goals>
+                                        <goal>run</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
     <!-- ====================================================================== -->
     <!-- D E P E N D E N C I E S                                                -->
     <!-- ====================================================================== -->
