@@ -7,7 +7,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
-const SOURCE_ROOT = __dirname + '/src/main/webpack';
+
+const SOURCE_ROOT = __dirname + '/src/main';
+const RESOURCE_PATH = '/assets'
+const SCRIPT_ENTRY = "/main.ts";
+const BRANDS_PATH = "/webpack"
+const SLASH = "/";
+// const CLIENTLIB_FOLDERS = ['base','components', 'dependencies', 'site']
+const CLIENTLIB_FOLDERS = ['base']
 
 const resolve = {
     extensions: ['.js', '.ts'],
@@ -15,20 +22,21 @@ const resolve = {
         configFile: './tsconfig.json'
     })]
 };
-
+// ui.frontend/src/main/webpack/base/main.ts
 module.exports = {
     resolve: resolve,
-    entry: {
-        site: SOURCE_ROOT + '/site/main.js'
+    entry: CLIENTLIB_FOLDERS.reduce((entryPaths, clientLibFolder) => {
+        entryPaths[clientLibFolder] = SOURCE_ROOT + BRANDS_PATH + SLASH + clientLibFolder + SCRIPT_ENTRY;
+        return entryPaths;
+    }, {}),
+    optimization: {
+        emitOnErrors: false,
     },
     output: {
-        filename: 'clientlib-site/js/[name].bundle.js',
+        filename: (chunkData) => {
+            return chunkData.chunk.name === 'dependencies' ? 'clientlib-dependencies/[name].js' : 'clientlib-[name]/[name].js';
+        },
         path: path.resolve(__dirname, 'dist')
-    },
-    optimization: {
-        splitChunks: {
-               chunks: 'all'
-             }
     },
     module: {
         rules: [
@@ -40,73 +48,47 @@ module.exports = {
                         loader: 'ts-loader'
                     },
                     {
-                        loader: 'glob-import-loader',
-                        options: {
-                            resolve: resolve
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
+                        loader: 'webpack-import-glob-loader',
                         options: {
                             url: false
                         }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                              plugins: [
-                                [
-                                  "autoprefixer",
-                                  {
-                                    // Options
-                                  },
-                                ],
-                              ],
-                            },
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                    },
-                    {
-                        loader: 'glob-import-loader',
-                        options: {
-                            resolve: resolve
-                        }
                     }
                 ]
             },
             {
-                test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-                use: {
-                  loader: 'file-loader',
-                  options: {
-                    name: '[path][name].[ext]'
-                  }
-                }
+                test: /\.(woff(2)?|ttf|eot)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: './resources/assets/fonts/[name][ext]',
+                },
+            },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader",
+                ],
             },
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ESLintPlugin({
-            extensions: ['js', 'ts', 'tsx']
-        }),
         new MiniCssExtractPlugin({
             filename: 'clientlib-[name]/[name].css'
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site' }
-            ]
         })
+        // ,
+        // new CopyWebpackPlugin({
+        //     patterns: CLIENTLIB_FOLDERS.map(
+        //         (brand) => (
+        //             {
+        //                 from: path.resolve(__dirname, SOURCE_ROOT + BRANDS_PATH + SLASH + brand + RESOURCE_PATH),
+        //                 to: "./clientlib-" + brand + RESOURCE_PATH
+        //             }
+        //         )
+        //     ),
+        // }),
     ],
     stats: {
         assetsSort: 'chunks',
