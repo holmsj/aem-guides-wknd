@@ -43,11 +43,13 @@
  for (const clientlibFolder of CLIENTLIB_FOLDERS) {
      var dependencies;
      dependencies = clientlibFolder === 'dependencies' ? '' : 'wknd.dependencies';
+     embed = clientlibFolder === 'dependencies' ? 'granite.csrf.standalone' : '';
      CLIENT_LIBS.push({
          ...libsBaseConfig,
          name: 'clientlib-' + clientlibFolder,
          categories: ['wknd.' + clientlibFolder],
          dependencies: [dependencies],
+         embed: [embed],
          assets: {
              // Copy entrypoint scripts and stylesheets into the respective ClientLib directories
              js: {
