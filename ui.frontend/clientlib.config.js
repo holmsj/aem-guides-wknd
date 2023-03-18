@@ -41,11 +41,13 @@
  const CLIENT_LIBS = []
  // Config for `aem-clientlib-generator`
  for (const clientlibFolder of CLIENTLIB_FOLDERS) {
+     var dependencies;
+     dependencies = clientlibFolder === 'dependencies' ? '' : 'wknd.dependencies';
      CLIENT_LIBS.push({
          ...libsBaseConfig,
          name: 'clientlib-' + clientlibFolder,
-         categories: [clientlibFolder + '.site'],
-         dependencies: ['wknd.dependencies'],
+         categories: ['wknd.' + clientlibFolder],
+         dependencies: [dependencies],
          assets: {
              // Copy entrypoint scripts and stylesheets into the respective ClientLib directories
              js: {

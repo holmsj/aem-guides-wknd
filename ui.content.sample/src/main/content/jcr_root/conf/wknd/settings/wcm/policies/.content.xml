@@ -1061,7 +1061,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="WKND Site Theme"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="[wknd.base,components.site,dependencies.site,site.site]"
+                    clientlibs="[wknd.base,wknd.components,wknd.site]"
                     clientlibsJsHead="wknd.dependencies"
                     clientlibsAsync="true">
                     <jcr:content
@@ -1079,7 +1079,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Experience Fragment Web"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="[wknd.base,components.site,dependencies.site,site.site]"
+                    clientlibs="[wknd.base,wknd.components,wknd.site]"
                     clientlibsAsync="true">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1572461714642>
