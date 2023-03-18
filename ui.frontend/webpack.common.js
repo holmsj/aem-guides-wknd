@@ -8,13 +8,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 
-const SOURCE_ROOT = __dirname + '/src/main';
+const SOURCE_ROOT = __dirname + '/src';
 const RESOURCE_PATH = '/assets'
 const SCRIPT_ENTRY = "/main.ts";
-const BRANDS_PATH = "/webpack"
+const LIBRARIES_PATH = "/libraries"
 const SLASH = "/";
 // const CLIENTLIB_FOLDERS = ['base','components', 'dependencies', 'site']
-const CLIENTLIB_FOLDERS = ['base']
+const CLIENTLIB_FOLDERS = ['components','dependencies','site']
 
 const resolve = {
     extensions: ['.js', '.ts'],
@@ -22,11 +22,10 @@ const resolve = {
         configFile: './tsconfig.json'
     })]
 };
-// ui.frontend/src/main/webpack/base/main.ts
 module.exports = {
     resolve: resolve,
     entry: CLIENTLIB_FOLDERS.reduce((entryPaths, clientLibFolder) => {
-        entryPaths[clientLibFolder] = SOURCE_ROOT + BRANDS_PATH + SLASH + clientLibFolder + SCRIPT_ENTRY;
+        entryPaths[clientLibFolder] = SOURCE_ROOT + LIBRARIES_PATH + SLASH + clientLibFolder + SCRIPT_ENTRY;
         return entryPaths;
     }, {}),
     optimization: {
@@ -78,17 +77,17 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'clientlib-[name]/[name].css'
         })
-        // ,
-        // new CopyWebpackPlugin({
-        //     patterns: CLIENTLIB_FOLDERS.map(
-        //         (brand) => (
-        //             {
-        //                 from: path.resolve(__dirname, SOURCE_ROOT + BRANDS_PATH + SLASH + brand + RESOURCE_PATH),
-        //                 to: "./clientlib-" + brand + RESOURCE_PATH
-        //             }
-        //         )
-        //     ),
-        // }),
+        ,
+        new CopyWebpackPlugin({
+            patterns: CLIENTLIB_FOLDERS.map(
+                (clientLibFolder) => (
+                    {
+                        from: path.resolve(__dirname, SOURCE_ROOT + LIBRARIES_PATH + SLASH + clientLibFolder + RESOURCE_PATH),
+                        to: "./clientlib-" + clientLibFolder + RESOURCE_PATH
+                    }
+                )
+            ),
+        }),
     ],
     stats: {
         assetsSort: 'chunks',

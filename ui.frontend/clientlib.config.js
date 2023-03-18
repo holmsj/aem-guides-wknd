@@ -37,7 +37,7 @@
    jsProcessor: ['default:none', 'min:none']
  };
  // Generate seperated client-libs
- const CLIENTLIB_FOLDERS = ['base','components', 'dependencies', 'site']
+ const CLIENTLIB_FOLDERS = ['components','dependencies','site']
  const CLIENT_LIBS = []
  // Config for `aem-clientlib-generator`
  for (const clientlibFolder of CLIENTLIB_FOLDERS) {
