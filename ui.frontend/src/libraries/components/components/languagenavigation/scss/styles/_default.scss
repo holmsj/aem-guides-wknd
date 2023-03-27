@@ -1,3 +1,5 @@
+$country-flag-size:          25px;
+
 .cmp-languagenavigation--default {
 
     .cmp-languagenavigation {
@@ -47,31 +49,31 @@
 
         /* COUNTRY FLAGS (Show for Level 0 only)*/
         &.cmp-languagenavigation__item--countrycode-CA {
-            background-image: url('#{$country-flag-path}/CA.svg');
+            background-image: url('#{$resource-images-path}/CA.svg');
         }
 
         &.cmp-languagenavigation__item--countrycode-CH{
-            background-image: url('#{$country-flag-path}/CH.svg');
+            background-image: url('#{$resource-images-path}/CH.svg');
         }
         
         &.cmp-languagenavigation__item--countrycode-DE {
-            background-image: url('#{$country-flag-path}/DE.svg');
+            background-image: url('#{$resource-images-path}/DE.svg');
         }
 
         &.cmp-languagenavigation__item--countrycode-ES {
-            background-image: url('#{$country-flag-path}/ES.svg');
+            background-image: url('#{$resource-images-path}/ES.svg');
         }
         
         &.cmp-languagenavigation__item--countrycode-FR {
-            background-image: url('#{$country-flag-path}/FR.svg');
+            background-image: url('#{$resource-images-path}/FR.svg');
         }
         
         &.cmp-languagenavigation__item--countrycode-IT {
-            background-image: url('#{$country-flag-path}/IT.svg');
+            background-image: url('#{$resource-images-path}/IT.svg');
         }
 
         &.cmp-languagenavigation__item--countrycode-US {
-            background-image: url('#{$country-flag-path}/US.svg');
+            background-image: url('#{$resource-images-path}/US.svg');
         }
 
         &:last-child {

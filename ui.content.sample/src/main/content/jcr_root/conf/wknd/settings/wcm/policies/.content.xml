@@ -1063,7 +1063,7 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     clientlibs="[wknd.base,wknd.components,wknd.site]"
                     clientlibsJsHead="wknd.dependencies"
-                    clientlibsAsync="true">
+                    clientlibsAsync="false">
                     <jcr:content
                         cq:lastReplicated="{Date}2019-10-22T13:34:50.533-07:00"
                         cq:lastReplicatedBy="admin"
@@ -1080,7 +1080,7 @@
                     jcr:title="Experience Fragment Web"
                     sling:resourceType="wcm/core/components/policy/policy"
                     clientlibs="[wknd.base,wknd.components,wknd.site]"
-                    clientlibsAsync="true">
+                    clientlibsAsync="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1572461714642>
             </xfpage>

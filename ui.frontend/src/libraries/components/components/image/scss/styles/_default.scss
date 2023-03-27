@@ -35,7 +35,7 @@
 	.cmp-image__image--is-loading {
 		display: flex;
 		background-color: $gray-light;
-		background-image: url('../resources/images/loading-icon.svg');
+		background-image: url('#{$resource-images-path}/loading-icon.svg');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: 60px 60px;

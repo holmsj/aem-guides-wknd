@@ -3,37 +3,37 @@
     "name": "WKND Site",
     "icons": [
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-32.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-32.png",
         "type": "image/png",
         "sizes": "32x32"
       },
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-128.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-128.png",
         "type": "image/png",
         "sizes": "128x128"
       },
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-152.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-152.png",
         "type": "image/png",
         "sizes": "152x152"
       },
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-167.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-167.png",
         "type": "image/png",
         "sizes": "167x167"
       },
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-180.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-180.png",
         "type": "image/png",
         "sizes": "180x180"
       },
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-192.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/images/favicons/favicon-512.png",
+        "src": "/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/assets/favicons/favicon-512.png",
         "type": "image/png",
         "sizes": "512x512"
       }

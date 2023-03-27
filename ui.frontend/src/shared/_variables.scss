@@ -107,11 +107,6 @@ $header-height: var(--headerHeight, 200px);
 $header-mobile-height: var(--headerMobileHeight, 130px);
 $utility-nav-height: var(--utilityNavHeight, 25px);
 
-//=== Language Switcher
-//** Load country flags from this directory.
-$country-flag-path:          '../resources/images/country-flags';
-$country-flag-size:          25px;
-
 //=== WKND Item Styles (Up Next, CF elements)
 $list-item-height: var(--listItemHeight, 120px);
 $list-item-border: 5px solid $brand-third;

@@ -65,6 +65,13 @@ module.exports = {
                 },
             },
             {
+                test: /\.(svg)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: './resources/assets/images/[name][ext]',
+                },
+            },
+            {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
