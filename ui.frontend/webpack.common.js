@@ -29,6 +29,7 @@ module.exports = {
         return entryPaths;
     }, {}),
     externals: {
+        jquery: "jQuery"
     },
     optimization: {
         emitOnErrors: false,
