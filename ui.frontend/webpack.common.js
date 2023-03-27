@@ -14,7 +14,7 @@ const SCRIPT_ENTRY = "/main.ts";
 const LIBRARIES_PATH = "/libraries"
 const SLASH = "/";
 // const CLIENTLIB_FOLDERS = ['base','components', 'dependencies', 'site']
-const CLIENTLIB_FOLDERS = ['components','dependencies','site']
+const CLIENTLIB_FOLDERS = ['components','site']
 
 const resolve = {
     extensions: ['.js', '.ts'],
@@ -28,6 +28,8 @@ module.exports = {
         entryPaths[clientLibFolder] = SOURCE_ROOT + LIBRARIES_PATH + SLASH + clientLibFolder + SCRIPT_ENTRY;
         return entryPaths;
     }, {}),
+    externals: {
+    },
     optimization: {
         emitOnErrors: false,
     },

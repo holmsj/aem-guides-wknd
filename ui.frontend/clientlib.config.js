@@ -37,19 +37,15 @@
    jsProcessor: ['default:none', 'min:none']
  };
  // Generate seperated client-libs
- const CLIENTLIB_FOLDERS = ['components','dependencies','site']
+ const CLIENTLIB_FOLDERS = ['components','site']
  const CLIENT_LIBS = []
  // Config for `aem-clientlib-generator`
  for (const clientlibFolder of CLIENTLIB_FOLDERS) {
-     var dependencies;
-     dependencies = clientlibFolder === 'dependencies' ? '' : 'wknd.dependencies';
-     embed = clientlibFolder === 'dependencies' ? 'granite.csrf.standalone' : '';
      CLIENT_LIBS.push({
          ...libsBaseConfig,
          name: 'clientlib-' + clientlibFolder,
          categories: ['wknd.' + clientlibFolder],
-         dependencies: [dependencies],
-         embed: [embed],
+         dependencies: ['wknd.dependencies'],
          assets: {
              // Copy entrypoint scripts and stylesheets into the respective ClientLib directories
              js: {
