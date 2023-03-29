@@ -13,7 +13,6 @@ const RESOURCE_PATH = '/assets'
 const SCRIPT_ENTRY = "/main.ts";
 const LIBRARIES_PATH = "/libraries"
 const SLASH = "/";
-// const CLIENTLIB_FOLDERS = ['base','components', 'dependencies', 'site']
 const CLIENTLIB_FOLDERS = ['components','site']
 
 const resolve = {
@@ -35,9 +34,7 @@ module.exports = {
         emitOnErrors: false,
     },
     output: {
-        filename: (chunkData) => {
-            return chunkData.chunk.name === 'dependencies' ? 'clientlib-dependencies/[name].js' : 'clientlib-[name]/[name].js';
-        },
+        filename: 'clientlib-[name]/[name].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -84,6 +81,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new ESLintPlugin({
+            extensions: ['js', 'ts', 'tsx']
+        }),
         new MiniCssExtractPlugin({
             filename: 'clientlib-[name]/[name].css'
         })

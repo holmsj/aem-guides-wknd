@@ -88,9 +88,6 @@ h1 a, h2 a, h3 a {
     color: $text-color;
 
     &:after {
-      //TODO Both Site and Components rely on this, but don't want to duplicate these resources. 
-        // @include wkndiconstyle();
-        // content: $wkndicon-play3;
         font-size: $font-size-xsmall;
         position: relative;
         top: -0.5em;
