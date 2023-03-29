@@ -72,9 +72,30 @@ module.exports = {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    "postcss-loader",
-                    "sass-loader",
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                              plugins: [
+                                [
+                                  "autoprefixer",
+                                  {
+                                    // Options
+                                  },
+                                ],
+                              ],
+                            },
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
                 ],
             },
         ]

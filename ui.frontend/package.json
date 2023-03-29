@@ -63,9 +63,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3",
-    "jquery": "^3.4.1",
+    "jquery": "3.4.1",
     "normalize-scss": "^7.0.1"
   },
   "browserslist": [
