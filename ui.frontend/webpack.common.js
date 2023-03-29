@@ -31,7 +31,9 @@ module.exports = {
         jquery: "jQuery"
     },
     optimization: {
-        emitOnErrors: false,
+        splitChunks: {
+                chunks: 'all'
+            }
     },
     output: {
         filename: 'clientlib-[name]/[name].js',
