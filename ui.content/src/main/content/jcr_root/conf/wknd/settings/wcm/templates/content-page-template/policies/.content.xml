@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2020-07-07T17:55:26.478-07:00"
+        cq:lastModified="{Date}2023-08-04T15:13:43.697-07:00"
         cq:lastModifiedBy="admin"
         cq:policy="wknd/components/page/policy_1570140199406"
         jcr:primaryType="nt:unstructured"
@@ -20,7 +20,7 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping"/>
             <container
-                cq:policy="wknd/components/container/policy_213106331986985"
+                cq:policy="wknd/components/container/policy_1691187161782"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping">
                 <wknd jcr:primaryType="nt:unstructured">
@@ -63,6 +63,10 @@
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <experiencefragment
                             cq:policy="wknd/components/experiencefragment/policy_34642779885901"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <container
+                            cq:policy="wknd/components/container/policy_213106331986985"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                     </components>

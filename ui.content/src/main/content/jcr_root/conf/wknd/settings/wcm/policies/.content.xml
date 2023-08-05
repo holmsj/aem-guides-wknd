@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="cq:Page">
     <rep:policy/>
@@ -36,14 +36,15 @@
                 </content-default>
                 <policy_213106331986985
                     cq:styleDefaultElement="main"
-                    jcr:lastModified="{Date}2020-07-09T08:11:09.069-07:00"
+                    jcr:lastModified="{Date}2023-08-04T15:13:43.688-07:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="WKND Content"
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundColorEnabled="true"
                     backgroundImageEnabled="true"
-                    components="[group:WKND.Content]">
+                    components="[group:WKND.Content]"
+                    layoutDisabled="false">
                     <jcr:content
                         cq:lastReplicated="{Date}2019-10-22T13:34:50.533-07:00"
                         cq:lastReplicatedBy="admin"
@@ -180,6 +181,64 @@
                         </item0>
                     </cq:styleGroups>
                 </policy_70911755464249>
+                <policy_1691187161782
+                    cq:styleDefaultElement="main"
+                    jcr:lastModified="{Date}2023-08-04T15:13:00.566-07:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="WKND Content Root - 24 Columns"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    backgroundColorEnabled="true"
+                    backgroundImageEnabled="true"
+                    columns="24"
+                    components="[group:WKND.Content]"
+                    layoutDisabled="false">
+                    <jcr:content
+                        cq:lastReplicated="{Date}2019-10-22T13:34:50.533-07:00"
+                        cq:lastReplicatedBy="admin"
+                        cq:lastReplicationAction="Activate"
+                        jcr:mixinTypes="[cq:ReplicationStatus]"
+                        jcr:primaryType="nt:unstructured"/>
+                    <cq:authoring jcr:primaryType="nt:unstructured">
+                        <assetToComponentMapping jcr:primaryType="nt:unstructured">
+                            <mapping_1553026868912
+                                jcr:primaryType="nt:unstructured"
+                                assetGroup="media"
+                                assetMimetype="image/*"
+                                droptarget="image"
+                                resourceType="wknd/components/image"/>
+                            <mapping_1570046914244
+                                jcr:primaryType="nt:unstructured"
+                                assetGroup="content"
+                                assetMimetype="text/html"
+                                droptarget="experiencefragment"
+                                resourceType="wknd/components/experiencefragment"/>
+                            <mapping_1570047042575
+                                jcr:primaryType="nt:unstructured"
+                                assetGroup="media"
+                                assetMimetype="[text/html,application/vnd.adobe.contentfragment]"
+                                droptarget="contentfragment"
+                                resourceType="wknd/components/contentfragment"/>
+                        </assetToComponentMapping>
+                    </cq:authoring>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleElement="div"
+                                    cq:styleId="1554340388221"
+                                    cq:styleLabel="Full Width"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-layout-container--fixed"
+                                    cq:styleElement="main"
+                                    cq:styleId="1554340406437"
+                                    cq:styleLabel="Fixed Width"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_1691187161782>
             </container>
             <form jcr:primaryType="nt:unstructured">
                 <container jcr:primaryType="nt:unstructured">
@@ -466,9 +525,8 @@
                     allowedRenditionWidths="[100,200,300,400,500,600,700,800,900,1000,1100,1200,1600]"
                     allowUpload="true"
                     altValueFromDAM="true"
-                    disableLazyLoading="true"
+                    disableLazyLoading="false"
                     displayPopupTitle="true"
-                    enableAssetDelivery="true"
                     isDecorative="false"
                     jpegQuality="{Long}60"
                     titleValueFromDAM="true"
@@ -1063,6 +1121,7 @@
                     jcr:title="WKND Site Theme"
                     sling:resourceType="wcm/core/components/policy/policy"
                     clientlibs="[wknd.site,wknd.base]"
+                    clientlibsAsync="true"
                     clientlibsJsHead="wknd.dependencies">
                     <jcr:content
                         cq:lastReplicated="{Date}2019-10-22T13:34:50.533-07:00"
@@ -1079,7 +1138,8 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Experience Fragment Web"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="[wknd.site,wknd.base]">
+                    clientlibs="[wknd.site,wknd.base]"
+                    clientlibsAsync="true">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1572461714642>
             </xfpage>
