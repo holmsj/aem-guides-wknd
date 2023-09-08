@@ -1,0 +1,9 @@
+{
+  "httpcache.config.order":"100",
+  "httpcache.config.expiry.on.create":"50000",
+  "httpcache.config.requesturi.patterns":["(.*)"],
+  "cacheConfigExtension.target":"(&(service.factoryPid=com.adobe.acs.commons.httpcache.config.impl.ResourceTypeHttpCacheConfigExtension)(configName=expensivecomp))",
+  "httpcache.config.request.authentication":"both",
+  "cacheKeyFactory.target":"(&(service.factoryPid=com.adobe.acs.commons.httpcache.config.impl.ResourceTypeHttpCacheConfigExtension)(configName=expensivecomp))",
+  "httpcache.config.filter-scope":"INCLUDE"
+}

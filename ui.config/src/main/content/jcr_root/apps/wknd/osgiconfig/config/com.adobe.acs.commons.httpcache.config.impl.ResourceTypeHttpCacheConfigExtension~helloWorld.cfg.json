@@ -1,0 +1,6 @@
+{
+  "httpcache.config.extension.paths.allowed":["/content/(.*)"],
+  "httpcache.config.extension.resource-types.allowed":["wknd/components/helloworld"],
+  "config.name":"expensivecomp",
+  "configName":"expensivecomp"
+}

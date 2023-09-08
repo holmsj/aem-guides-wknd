@@ -22,7 +22,7 @@
     <parent>
         <groupId>com.adobe.aem.guides</groupId>
         <artifactId>aem-guides-wknd</artifactId>
-        <version>3.2.1-SNAPSHOT</version>
+        <version>3.3.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -206,6 +206,14 @@
                             <finalName>aem-guides-wknd.all-${version}-classic</finalName>
                             <group>com.adobe.aem.guides</group>
                             <embeddeds>
+                                 <embedded>
+                                    <groupId>com.adobe.acs</groupId>
+                                    <artifactId>acs-aem-commons-all</artifactId>
+                                    <type>zip</type>
+                                    <target>/apps/wknd-vendor-packages/container/install</target>
+                                    <filter>true</filter>
+                                    <isAllVersionsFilter>true</isAllVersionsFilter>
+                                </embedded>
                                 <embedded>
                                     <groupId>com.adobe.aem.guides</groupId>
                                     <artifactId>aem-guides-wknd.ui.apps</artifactId>
@@ -312,6 +320,12 @@
         <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.config</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.acs</groupId>
+            <artifactId>acs-aem-commons-all</artifactId>
+            <version>6.0.14</version>
             <type>zip</type>
         </dependency>
         <dependency>
