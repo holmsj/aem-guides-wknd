@@ -30,6 +30,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 @Model(adaptables = Resource.class)
@@ -46,6 +47,8 @@ public class HelloWorldModel {
 
     private String message;
 
+    private String time;
+
     @PostConstruct
     protected void init() {
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
@@ -53,9 +56,12 @@ public class HelloWorldModel {
                 .map(pm -> pm.getContainingPage(currentResource))
                 .map(Page::getPath).orElse("");
 
+        time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+
         message = "Hello World!\n"
             + "Resource type is: " + resourceType + "\n"
-            + "Current page is:  " + currentPagePath + "\n";
+            + "Current page is:  " + currentPagePath + "\n"
+            + "Current time is: " + time + "\n";
     }
 
     public String getMessage() {
