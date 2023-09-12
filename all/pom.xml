@@ -56,6 +56,11 @@
                     <skipSubPackageValidation>true</skipSubPackageValidation>
                     <embeddeds>
                         <embedded>
+                            <groupId>org.apache.sling</groupId>
+                            <artifactId>org.apache.sling.dynamic-include</artifactId>
+                            <target>/apps/wknd-vendor-packages/content/install</target>
+                        </embedded>
+                        <embedded>
                             <groupId>com.adobe.aem.guides</groupId>
                             <artifactId>aem-guides-wknd.ui.apps</artifactId>
                             <type>zip</type>
@@ -323,6 +328,11 @@
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
             <type>zip</type>
-        </dependency>        
+        </dependency>
+        <!-- Sling dynamic include -->  
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.dynamic-include</artifactId>           
+        </dependency>     
     </dependencies>
 </project>

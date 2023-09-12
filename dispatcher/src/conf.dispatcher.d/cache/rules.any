@@ -5,3 +5,8 @@
 #
 
 $include "./default_rules.any"
+
+/disable-nocache {
+    /glob "*.nocache.html*"
+    /type "deny"
+}
