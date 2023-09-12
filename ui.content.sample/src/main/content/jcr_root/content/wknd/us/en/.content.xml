@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <errors/>
     <jcr:content
-        cq:lastModified="{Date}2020-09-30T17:38:06.578-07:00"
+        cq:isDelivered="{Boolean}false"
+        cq:lastModified="{Date}2023-09-12T07:49:46.018-07:00"
         cq:lastModifiedBy="admin"
+        cq:lastReplicated="{Date}2023-09-12T07:49:48.599-07:00"
+        cq:lastReplicated_publish="{Date}2023-09-12T07:49:48.599-07:00"
+        cq:lastReplicatedBy="admin"
+        cq:lastReplicatedBy_publish="admin"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
         cq:lastRolledout="{Date}2020-09-30T17:38:21.080-07:00"
         cq:lastRolledoutBy="admin"
         cq:tags="[wknd-shared:customer-journey/attract]"
         cq:template="/conf/wknd/settings/wcm/templates/landing-page-template"
         jcr:description="WKND is a collective of outdoors, music, crafts, adventure sports, and travel enthusiasts that want to share our experiences, connections, and expertise with the world."
-        jcr:mixinTypes="[cq:LiveRelationship,cq:LiveSync]"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:LiveRelationship,cq:LiveSync,cq:ReplicationStatus2,mix:versionable]"
         jcr:primaryType="cq:PageContent"
         jcr:title="WKND Adventures and Travel"
+        jcr:uuid="3e4590d4-53ae-4e57-84a3-dd7dca176391"
         sling:resourceType="wknd/components/page"
         pageTitle="Home">
         <root
@@ -156,6 +165,13 @@
                         cq:lastRolledoutBy="admin"
                         jcr:mixinTypes="[cq:LiveRelationship]"
                         jcr:primaryType="nt:unstructured"/>
+                    <helloworld
+                        jcr:created="{Date}2023-09-11T09:23:57.145-07:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2023-09-11T09:23:57.145-07:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wknd/components/helloworld"/>
                     <teaser
                         cq:lastRolledout="{Date}2020-09-30T17:38:06.512-07:00"
                         cq:lastRolledoutBy="admin"

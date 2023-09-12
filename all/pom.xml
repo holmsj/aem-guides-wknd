@@ -338,5 +338,10 @@
             <version>6.2.0</version>
             <type>zip</type>
         </dependency>
+        <!-- Sling dynamic include -->  
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.dynamic-include</artifactId>           
+        </dependency>     
     </dependencies>
 </project>

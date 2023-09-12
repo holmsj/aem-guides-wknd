@@ -11,3 +11,8 @@ $include "./default_rules.any"
     /glob "/content/wknd/us/en/magazine.html"
     /type "deny"
 }
+
+/disable-nocache {
+    /glob "*.nocache.html*"
+    /type "deny"
+}

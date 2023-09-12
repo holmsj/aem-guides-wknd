@@ -117,6 +117,13 @@ Include conf.d/variables/custom.vars
 	<Directory "${DOCROOT}">
 		AllowOverride None
 		Require all granted
+
+		# Add Includes to enable SSI Includes used by Sling Dynamic Include
+		Options FollowSymLinks Includes
+		# Required to have dispatcher-handler process includes
+		ModMimeUsePathInfo On
+		# Set includes to process .html files
+		AddOutputFilter INCLUDES .html
 	</Directory>
 	<IfModule disp_apache2.c>
 		# Enabled to allow rewrites to take affect and not be ignored by the dispatcher module
@@ -145,13 +152,13 @@ Include conf.d/variables/custom.vars
         Header set Cache-Control "max-age=2592000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
-    # HTML pages: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS, also incl. requests with query parameter
-    # Cache-Control headers will always be added so it is important to ensure that matching html pages under /content/ are intended to be public
+
+    # For the Sling Dynamic Include Tutorial, disable CDN cache for html files. This will make it easier to see SDI in action
+    # if this is deployed to a CS sandbox
     <LocationMatch "^/content/.*\.html$">
         Header unset Cache-Control
-        Header always set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
-        Header always set Surrogate-Control "stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
+        Header set Cache-Control "private max-age=0"
+
     </LocationMatch>
     <LocationMatch "^/content/wknd/us/en/magazine/members-only.*\.html$">
         Header unset Cache-Control
