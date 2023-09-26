@@ -66,6 +66,7 @@
         <wknd-shared.version>3.1.0</wknd-shared.version>
         <wknd-shared.65.version>2.2.2</wknd-shared.65.version>
         <aemanalyser.version>1.5.8</aemanalyser.version>
+        <netcentric.actool>3.0.9</netcentric.actool>
     </properties>
 
     <organization>
@@ -762,6 +763,23 @@ Bundle-DocURL:
                 <type>zip</type>
             </dependency>
 
+            <!--Netcentric ACL Tool -->
+            <dependency>
+                <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                <artifactId>accesscontroltool-package</artifactId>
+                <classifier>cloud</classifier>
+                <type>content-package</type>
+                <version>${netcentric.actool}</version>
+            </dependency>
+            <!--Oak Index for netcentric ACL Tool -->
+            <dependency>
+                <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                <artifactId>accesscontroltool-oakindex-package</artifactId>
+                <classifier>cloud</classifier>
+                <type>zip</type>
+                <version>${netcentric.actool}</version>
+            </dependency>
+            
             <!-- Testing -->
             <dependency>
                 <groupId>org.junit</groupId>

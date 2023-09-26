@@ -1,0 +1,17 @@
+- group_config:
+
+    - wknd-members-actool-example:
+
+       - name: WKND Members AC Tool Example
+         isMemberOf: 
+         members: 
+         path: w
+
+- ace_config:
+
+    - wknd-members-acl-example:
+
+       - path: /content/cq:tags
+         permission: allow
+         actions: read
+         privileges: 

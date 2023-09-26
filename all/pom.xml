@@ -90,6 +90,20 @@
                             <type>zip</type>
                             <target>/apps/wknd-vendor-packages/content/install</target>
                         </embedded>
+                        <embedded>
+                            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                            <artifactId>accesscontroltool-package</artifactId>
+                            <classifier>cloud</classifier>
+                            <type>content-package</type>
+                            <target>/apps/wknd-vendor-packages/application/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                            <artifactId>accesscontroltool-oakindex-package</artifactId>
+                            <classifier>cloud</classifier>
+                            <type>zip</type>
+                            <target>/apps/wknd-vendor-packages/application/install</target>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -323,6 +337,19 @@
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
             <type>zip</type>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+            <artifactId>accesscontroltool-package</artifactId>
+            <type>content-package</type>
+            <classifier>cloud</classifier>
+        </dependency>
+        <!-- Oak Index for Netcentric ACL Tool -->
+        <dependency>
+            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+            <artifactId>accesscontroltool-oakindex-package</artifactId>
+            <type>zip</type>
+            <classifier>cloud</classifier>
+        </dependency>
     </dependencies>
 </project>
