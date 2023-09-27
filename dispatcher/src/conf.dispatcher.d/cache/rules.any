@@ -5,3 +5,9 @@
 #
 
 $include "./default_rules.any"
+
+# Don't cache page with links based on login status
+/00013 {
+    /glob "/content/wknd/us/en/magazine.html"
+    /type "deny"
+}
