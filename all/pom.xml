@@ -56,6 +56,14 @@
                     <skipSubPackageValidation>true</skipSubPackageValidation>
                     <embeddeds>
                         <embedded>
+                            <groupId>com.adobe.acs</groupId>
+                            <artifactId>acs-aem-commons-all</artifactId>
+                            <type>zip</type>
+                            <target>/apps/wknd-vendor-packages/container/install</target>
+                            <filter>true</filter>
+                            <isAllVersionsFilter>true</isAllVersionsFilter>
+                        </embedded>
+                        <embedded>
                             <groupId>com.adobe.aem.guides</groupId>
                             <artifactId>aem-guides-wknd.ui.apps</artifactId>
                             <type>zip</type>
@@ -323,6 +331,12 @@
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
             <type>zip</type>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.acs</groupId>
+            <artifactId>acs-aem-commons-all</artifactId>
+            <version>6.2.0</version>
+            <type>zip</type>
+        </dependency>
     </dependencies>
 </project>
