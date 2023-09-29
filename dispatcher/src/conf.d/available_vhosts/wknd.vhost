@@ -85,8 +85,8 @@ Include conf.d/variables/custom.vars
         Header merge Vary Origin
 
         # CORS - send 204 for CORS requests which are not trusted
-        RewriteCond expr "reqenv('CORSProcessing') == 'true' && reqenv('CORSTrusted') == 'false'"
-        RewriteRule "^(.*)" - [R=204,L]
+        # RewriteCond expr "reqenv('CORSProcessing') == 'true' && reqenv('CORSTrusted') == 'false'"
+        # RewriteRule "^(.*)" - [R=204,L]
 
         # Remove Origin before sending to AEM Publish
         RequestHeader unset Origin
@@ -153,7 +153,7 @@ Include conf.d/variables/custom.vars
         Header always set Surrogate-Control "stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
-    <LocationMatch "^/content/wknd/us/en/magazine/members-only.*\.html$">
+    <LocationMatch "^/content/wknd/(.*)/magazine(.*).html$">
         Header unset Cache-Control
         Header always set Cache-Control "private"
     </LocationMatch>

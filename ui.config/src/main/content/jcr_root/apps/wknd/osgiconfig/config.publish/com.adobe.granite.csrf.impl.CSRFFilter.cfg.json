@@ -16,7 +16,8 @@
     "/content/communities/scorm/RecordResults",
     "/graphql",
     "/libs/dam/cfm/headless/endpoints/content/graphql",
-    "/content/_cq_graphql/wknd-shared/endpoint.json"
+    "/content/_cq_graphql/wknd-shared/endpoint.json",
+    "/system/sling/logout"
   ],
   "filter.methods":[
     "POST",
