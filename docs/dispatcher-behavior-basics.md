@@ -3,7 +3,7 @@
 For the first few years that AEMaaCS was available, the Dispatcher SDK running in Docker had a disadvantage. With the provided start scripts, the cached folder and file structure were inside the running Docker container, thus invisible to MacOS Finder or Windows Explorer. This left a couple of options when troubleshooting:
 
 * Open a terminal and navigate the cache using command line. For those more used to GUIs this made things hard, and even for command line experts seeing changes required additional steps.
-* Customize the start scripts and have Docker mount the files outside the container in a specified hard disk path. This required knowledge and time to apply script changes every time a new SDK was released. 
+* Customize the start scripts and have Docker mount the files outside the container in a specified hard disk path. This required knowledge and time to apply script changes every time a new SDK was released.
 
 Luckily, Docker Desktop introduced an experimental feature in February 2023 which shortly after became standard. This is called Container File Explorer. If you haven't updated Docker Desktop in some time, pause your reading and do it now!
 
