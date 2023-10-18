@@ -17,7 +17,7 @@ Prerequisites
 
 The purpose of Sling Dynamic Include, or SDI, is to dynamically replace sling includes with either server side includes, edge side includes or even JavaScript includes. This can be a very powerful tool, especially in the context of aem's dispatcher, as it pushes cache life granularity to the component level versus the page level.
 
-To consider a use case, a website homepage may be cached in the dispatcher for hours at a time until content is changed or AEMaaCS Pods recycle. But what if there is a requirement to display the three latest news articles from an external platform on the homepage?
+To consider a use case, a website homepage may be cached in the dispatcher for hours at a time until changed content is published or AEMaaCS Pods recycle. But what if there is a requirement to display the three latest news articles from an external platform within the homepage?
 
 With Sling Dynamic Include, the entire page can be cached with only the Latest News component being marked for dynamic inclusion. The dynamic section could be set to never be cached, thus requesting rendering from publish on every request. Alternately it could be set with a short TTL (Time to Live) in the Dispatcher cache to ensure freshness while reducing calls to the publish pods.
 
@@ -25,7 +25,7 @@ With Sling Dynamic Include, the entire page can be cached with only the Latest N
 
 ## But what about AEMaaCS?
 
-Support for SDI in in AEM as a Cloud Service has been in a grey area of support, with confusion around whether it can be recommended. Some clarity has been added since it's underlying Dispatcher module, mod_include, has been added to Supported Apache Modules in documentation. This does contain a caveat
+Support for SDI in in AEM as a Cloud Service has been in a grey area of support, with confusion around whether it can be recommended. Some clarity has been given since its underlying Dispatcher module, mod_include, has been added to Supported Apache Modules in documentation. This does contain a caveat
 > mod_include (no directives supported)
 
 Despite this addition, SDI documentation found in Experience League is specific to AEM 6.5, where there are some unclear differences compared to setting up in AEMaaCS. As mentioned above, no mod_include directives are supported in CS, but this does not mean we're out of luck. Actually, mod_include is enabled by default and we don't need to bother with some steps shown in older 6.5 documentation.
