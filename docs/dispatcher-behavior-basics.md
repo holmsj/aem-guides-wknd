@@ -1,5 +1,7 @@
 # Understanding Dispatcher Using Docker
 
+> Skill level: 101 - Basic to Intermediate
+
 For the first few years that AEMaaCS was available, the Dispatcher SDK running in Docker had a disadvantage. With the provided start scripts, the cached folder and file structure were inside the running Docker container, thus invisible to MacOS Finder or Windows Explorer. This left a couple of options when troubleshooting:
 
 * Open a terminal and navigate the cache using command line. For those more used to GUIs this made things hard, and even for command line experts seeing changes required additional steps.

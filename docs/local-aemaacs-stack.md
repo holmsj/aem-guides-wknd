@@ -10,6 +10,8 @@ cache files and understand nuances of behavior (statfileslevel, TTL, Sling Dynam
 * AEMaaCS environments do not allow for log level settings lower than debug. In some cases, this makes troubleshooting extremely difficult.
   * The recommend level for debugging Rewrites is trace2 or lower. This is only possible in local SDK.
 
+> Skill level: 101 - Basic to Intermediate
+
 The skills practiced in this session are:
 
 * AEM Developer - Local Setup and IDE
@@ -149,13 +151,13 @@ Unzip `aem-sdk-dispatcher-tools-x.x.x-windows.zip` into `C:\Users\<My User>\aem-
 **MacOS**
 
 ```shell
-./bin/docker_run_hot_reload.sh /Users/username/Documents/GitHub/aem-guides-wknd-fork/dispatcher/src host.docker.internal:4503 8080
+./bin/docker_run_hot_reload.sh /Users/{username}/Documents/GitHub/aem-guides-wknd-fork/dispatcher/src host.docker.internal:4503 8080
 ```
 
 **Windows**
 
 ```shell
-TODO verify hot_reload is available in Win
+bin\docker_run <src-folder> <aem-publish-host>:<aem-publish-port> <dispatcher-port>
 ```
 
 ## Simulate Content Distribution
