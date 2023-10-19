@@ -8,7 +8,8 @@ Prerequisites
 
 * A local AEMaaCS SDK Author/Publish/Dispatcher stack (preferred) or AEMaaCS Sandbox
   * *See [AEMaaCS Local Stack](local-aemaacs-stack.md) if you need to learn how*
-  * *If you are going to revisit the [AEMaaCS Local Stack](local-aemaacs-stack.md) tutorial, use the [WKND Branch for Sling Dynamic Include](https://github.com/holmsj/aem-guides-wknd/tree/feature/sling-dynamic-include) from this tutorial as you deploy code.*
+  * *See [Dispatcher Behavior Basics](dispatcher-behavior-basics.md) if you're not familiar with navigating the Dispatcher in Docker Desktop*
+  * *If you are going to revisit either of the above to set up for this tutorial, use the [WKND Branch for Sling Dynamic Include](https://github.com/holmsj/aem-guides-wknd/tree/feature/sling-dynamic-include) from this tutorial as you deploy code.*
 * Your preferred Git client
 * Visual Studio Code or other IDE
 * Ability to build and deploy AEM projects using Maven
@@ -111,11 +112,11 @@ A fundamental feature of AEM is Experience Fragments. An Experience Fragment is 
 
 There are a couple of optimizations we can consider in this area:
 
-* Exen though a Fragment is on many pages, the publish server does not render it just once after every cache flush. It is re-rendered in the context of every single page that references it.
-* In some cases, there could be different content in the Header based on groups of a logged in user. *(Note: this could be handled in a variety of ways, but SDI could be considered)*
+* When an Experience Fragment is on many pages, the publish server does not render it just once after every cache flush. It is re-rendered in the context of every single page that references it.
+* In some cases, there could be different content in the Header based on groups of a logged in user. In this case, caching it would display the same content to all users. *(Note: this could be handled in a variety of ways, but SDI could be considered)*
 * AEMaaCS has some complexities with Experience Fragments.
   * If you edit a fragment under **/content/experience-fragments/wknd** and publish the changes, this does not clear the pages cached **/content/wknd/**
-  * This results in cached pages which reference the fragment displaying outdated cached versions of it.
+  * This results in cached pages that contain the fragment displaying outdated cached content from it.
   * *Learn about statfileslevel in [Understanding Dispatcher Using Docker](dispatcher-behavior-basics.md)*
 
 ### Create Configurations for XFs
@@ -181,7 +182,7 @@ To enable SDI for Experience Fragments, we will create two OSGI configurations f
       * In this case, we are using a different selector **sharedcontent** because we *do* want the Experience Fragment to be cached, but separately from the rest of the page.
 1. Run a build (or export using VS Code plugin) of these updated configurations to publish using the command ```mvn clean install -PautoInstallSinglePackagePublish```
 
-### Verify SDI of Experience Fragments
+### Verify Dynamic Include of Experience Fragments
 
 1. Once the build completes, trigger a cache flush by opening the [/content/wknd/en/us page in Author](http://localhost:4502/editor.html/content/wknd/us/en.html), then publishing the page.
 1. Rather than looking at the homepage, open the Abous Us page. Do this in your Incognito browser using ```http://localhost:8080/us/en/about-us.html```
