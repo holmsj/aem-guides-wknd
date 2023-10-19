@@ -41,7 +41,7 @@ Adding SDI to WKND for this tutorial took place in two commits. The first commit
 * As WKND uses the Maven Enforcer plug in, this change required numerous updates to pom file and bundle versions.
 * It is not necesary for this tutorial, but you can optionally [view the commit here](https://github.com/adobe/aem-guides-wknd/commit/1838b5f05993b72976a96e0ce955bb8227323b70).
 
-The second commit contained the changes specific to enabling Sling Dynamic Include in an AEMaaCS project. It contained 7 changed files, 2 of which are for tutorial purposes. This means SDI can be enabled for AEMaaCS with only 5 changed files! [https://github.com/adobe/aem-guides-wknd/commit/f89ae42ed5b124b81bdc57ff3a812a4d77970641](https://github.com/adobe/aem-guides-wknd/commit/f89ae42ed5b124b81bdc57ff3a812a4d77970641).
+The second commit contained the changes specific to enabling Sling Dynamic Include in an AEMaaCS project. It contained 7 changed files, 2 of which are for tutorial purposes. This means SDI can be enabled for AEMaaCS with only 5 changed files! [View the changes here](https://github.com/adobe/aem-guides-wknd/commit/69bb7af0566084b66842f14f75c5c20d3c3fd748).
 
 * **pom.xml**
   * Added top level dependency for **org.apache.sling.dynamic-include**
