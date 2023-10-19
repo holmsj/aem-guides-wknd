@@ -2,7 +2,7 @@
 
 This tutorial will quickly allow you to deploy a fork of the AEM Guides WKND project configured for Sling Dynamic Include to understand concepts and try out settings. The example can be deployed to a local AEMaaCS SDK Stack (preferred) or an AEMaaCS Sandbox.
 
-> Skill level: 202 - Intermediate to Advanced
+> Skill level: 202 - Intermediate
 
 Prerequisites
 
