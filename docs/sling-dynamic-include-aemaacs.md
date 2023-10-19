@@ -94,7 +94,7 @@ The second commit contained the changes specific to enabling Sling Dynamic Inclu
 1. You should see a Hello World component included in the page as shown below. If you do not, you may need to trigger a cache flush by opening the [/content/wknd/en/us page in Author Edit](http://localhost:4502/editor.html/content/wknd/us/en.html), then publishing the page. Reload the page at localhost:8080 in Incognito browser.
   ![Hello World component on WKND Home Page](assets/sling-dynamic-include-aemaacs/helloworld-sdi-component.png)
 1. Once you are seeing the page with Hello World component, you should be able to reload the page multiple times and see that the current time always updates in the component, but the page loads very quickly as the rest of it is cached.
-1. Next,open Docker Desktop to see how SDI works.
+1. Next, open Docker Desktop to see how SDI works.
 1. In the **Files** tab, navigate to **/mnt/var/www/html/content/wknd/us/en.html**
 1. Right click **en.html** and select **Edit File**
 1. Search the cache file's contents by pressing Cmd+F (Ctrl+F in Windows) and entering ```SDI indclude```
@@ -228,7 +228,8 @@ To use ACS commons in a real AEMaaCS environment, it must be included in the pro
     ```
 
 1. In the above configuration
-    * The TTL is being set to 120 seconds
+    * The TTL is being set to 120 seconds (2 minutes)
+    * A filter pattern is set to match instances of the helloworld component under a page's content node (_jcr_content)
 1. Now we must adjust the SDI configuration for this compponent. Edit **ui.config/src/main/content/jcr_root/apps/wknd/osgiconfig/config.publish/org.apache.sling.dynamicinclude.Configuration~content.cfg.json**
     * Remove the **nocache** value from selector property to match:
 
