@@ -196,7 +196,7 @@ To enable SDI for Experience Fragments, we will create two OSGI configurations f
 Now that your environment is configured and you have some understanding, try some different settings and scenarios.
 
 1. Change include-filter.config.include-type from ```SSI``` to ```JSI```.
-    * ![Q and A](assets/question-mark-25px.jpg) What does this look like when viewing cached pages in the Dispatcher cache file structure? How about browser network requests?
+    * ![Q and A](assets/question-mark-25px.jpg) What does this virtual include look like when viewing cached page's html in the Dispatcher cache file structure? How about browser network requests? *Hint: filter for Doc or HTML requests*
 1. In this tutorial, we configured our Experience Fragments to be cached and reused separate from pages.
     * What if some Experience Fragments contain components which refer to context aware configurations, thus must be rendered within the page?
     * ![Q and A](assets/question-mark-25px.jpg) As a developer, how would you allow for both types of Experience Fragments?
