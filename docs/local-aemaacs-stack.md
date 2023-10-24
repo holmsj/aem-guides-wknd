@@ -23,6 +23,7 @@ Prerequisites
 * Java 11 and Maven installed and available via Command Line
 * Github Desktop or similar git client installed
 * Visual Studio Code IDE installed (or your preferred IDE for advanced users)
+* Docker Desktop - Latest
 
 > Note that `~` is used as shorthand for the User's Directory. In Windows, this is the equivalent of `%HOMEPATH%`.
 
