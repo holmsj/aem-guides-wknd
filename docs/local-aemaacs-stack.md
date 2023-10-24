@@ -20,7 +20,7 @@ The skills practiced in this session are:
 
 Prerequisites
 
-* Java 11 installed and version verified by command line
+* Java 11 and Maven installed and available via Command Line
 * Github Desktop or similar git client installed
 * Visual Studio Code IDE installed (or your preferred IDE for advanced users)
 
