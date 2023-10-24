@@ -56,19 +56,19 @@ The local AEM Author Service provides developers with a local experience digital
 **MacOS**
 
   ```shell
-  $ mkdir -p ~/aem-sdk/author
-  $ cp aem-sdk-Quickstart-XXX.jar ~/aem-sdk/author/aem-author-p4502.jar
-  $ cd ~/aem-sdk/author
-  $ java -jar aem-author-p4502.jar
+  mkdir -p ~/aem-sdk/author
+  cp aem-sdk-Quickstart-XXX.jar ~/aem-sdk/author/aem-author-p4502.jar
+  cd ~/aem-sdk/author
+  java -jar aem-author-p4502.jar
   ```
 
 **Windows**
 
   ```shell
-  $ mkdir -p c:\Users\<My User>\aem-sdk\author
-  $ copy aem-sdk-Quickstart-XXX.jar c:\Users\<My User>\aem-sdk\author\aem-author-p4502.jar
-  $ cd c:\Users\<My User>\aem-sdk\author
-  $ java -jar aem-author-p4502.jar
+  mkdir -p c:\Users\<My User>\aem-sdk\author
+  copy aem-sdk-Quickstart-XXX.jar c:\Users\<My User>\aem-sdk\author\aem-author-p4502.jar
+  cd c:\Users\<My User>\aem-sdk\author
+  java -jar aem-author-p4502.jar
   ```
 
 ## Set up local AEM Publish service
@@ -87,19 +87,19 @@ The local AEM Publish Service provides developers with the local experience end-
 **MacOS**
 
 ```shell
-$ mkdir -p ~/aem-sdk/publish
-$ cp aem-sdk-Quickstart-XXX.jar ~/aem-sdk/publish/aem-publish-p4503.jar
-$ cd ~/aem-sdk/publish
-$ java -jar aem-publish-p4503.jar
+mkdir -p ~/aem-sdk/publish
+cp aem-sdk-Quickstart-XXX.jar ~/aem-sdk/publish/aem-publish-p4503.jar
+cd ~/aem-sdk/publish
+java -jar aem-publish-p4503.jar
 ```
 
 **Windows**
 
 ```shell
-$ mkdir -p c:\Users\<My User>\aem-sdk\publish
-$ copy aem-sdk-Quickstart-XXX.jar c:\Users\<My User>\aem-sdk\publish\aem-publish-p4503.jar
-$ cd c:\Users\<My User>\aem-sdk\publish
-$ java -jar aem-publish-p4503.jar
+mkdir -p c:\Users\<My User>\aem-sdk\publish
+copy aem-sdk-Quickstart-XXX.jar c:\Users\<My User>\aem-sdk\publish\aem-publish-p4503.jar
+cd c:\Users\<My User>\aem-sdk\publish
+java -jar aem-publish-p4503.jar
 ```
 
 ## Install WKND Reference site on Author and Publish Services
@@ -134,8 +134,8 @@ The version of Dispatcher Tools is different from that of the AEM SDK. Ensure th
 **macOS**
 
 ```shell
-$ chmod a+x aem-sdk-dispatcher-tools-x.x.x-unix.sh
-$ ./aem-sdk-dispatcher-tools-x.x.x-unix.sh
+chmod a+x aem-sdk-dispatcher-tools-x.x.x-unix.sh
+./aem-sdk-dispatcher-tools-x.x.x-unix.sh
 ```
 
 **Window**
