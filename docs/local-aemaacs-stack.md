@@ -1,5 +1,5 @@
 
-# Set up local AEMaaCS SDK Stack for Dispatcher Troubleshooting
+# Set up local AEMaaCS SDK Stack with Dispatcher
 
 This enablement will walk you through the process of running the AEMaaCS Dispatcher SDK on a local environment. Doing this has the following benefits over testing configurations in a hosted CS program environment
 
