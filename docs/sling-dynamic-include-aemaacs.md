@@ -146,30 +146,6 @@ To enable SDI for Experience Fragments, we will create two OSGI configurations f
       ]
     }
     ```
-
-1. Create another file named ```org.apache.sling.dynamicinclude.Configuration~xf-conf.cfg.json```
-1. Enter the below contents in the file.
-
-    ```json
-      {
-        "include-filter.config.resource-types":[
-          "wknd/components/xfpage"
-        ],
-        "include-filter.config.enabled":true,
-        "include-filter.config.path":"/conf",
-        "include-filter.config.required_header":"Server-Agent=Communique-Dispatcher",
-        "include-filter.config.include-type":"SSI",
-        "include-filter.config.selector":"sharedcontent",
-        "include-filter.config.extension":"html",
-        "include-filter.config.add_comment":true,
-        "include-filter.config.rewrite":true,
-        "include-filter.config.appendSuffix":true,
-        "include-filter.config.ignoreUrlParams=":[
-          ""
-        ]
-      }
-    ```
-
 1. There are a few properties above to pay special attention to:
     * **include-filter.config.resource-types**
       * Gives the publish server instructions to replace these components with virtual include instructions to be carried out in the Dispatcher.
@@ -201,40 +177,38 @@ Now that your environment is configured and you have some understanding, try som
     * What if some Experience Fragments contain components which refer to context aware configurations, thus must be rendered within the page?
     * ![Q and A](assets/question-mark-25px.jpg) As a developer, how would you allow for both types of Experience Fragments?
 
-## Extra Credit - Use ACS Commons Dispatcher TTL on Hello World Component
+## Enable TTL on Hello World Component
 
 The AEMaaCS Project Archetype dispatcher configurations contain a setting called **enableTTL**, which is enabled by default. [Caching in AEM as a Cloud Service](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html?lang=en) states:
 > Rules can be applied to the Dispatcher configuration to modify any default cache expiration settings, resulting in caching at the CDN. Dispatcher also respects the resulting cache expiration headers if enableTTL is enabled in the Dispatcher configuration, implying that it refreshes specific content even outside of content being republished.
 
-This can be a source of confusion, as we are often applying cache control headers within Dispatcher vhosts to control CDN behavior. This alone will not result in TTL based expiration in the Dispatcher's cache. For TTLs to be respected in the Dispatcher layer, there must be a cache-control header added via the publish server. This could happen via custom code, such as a Sling Filter or in a Servlet, but there is an easier way via the [ACS Commons Dispatcher TTL](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-ttl/) feature.
+This can be a source of confusion, as we are often applying cache control headers within Dispatcher vhosts to control CDN behavior. This alone will not result in TTL based expiration in the Dispatcher's cache. For TTLs to be respected in the Dispatcher layer, there must be a cache-control header added via the publish server. This could happen via custom code, such as a Sling Filter or in a Servlet, but using Sling Dynamic Include there is a built in configuration.
 
-To use ACS commons in a real AEMaaCS environment, it must be included in the project via Maven configurations and installed through the Pipeline. For simplicity of this tutorial, it is possible to simply install using Package Manager on the local publish environment.
-
-1. Download the latest release of ACS Commons **acs-aem-commons-all-6.x.x.zip** from GitHub at [https://github.com/Adobe-Consulting-Services/acs-aem-commons/releases](https://github.com/Adobe-Consulting-Services/acs-aem-commons/releases)/
-1. Open Package Manager on the local Publish server at [http://localhost:4503/crx/packmgr/index.jsp](http://localhost:4503/crx/packmgr/index.jsp)
-    * You may need to log in at [http://localhost:4503/libs/granite/core/content/login.html](http://localhost:4503/libs/granite/core/content/login.html)
-1. Install the package downloaded in step 1.
-1. In your IDE, navigate to **ui.config/src/main/content/jcr_root/apps/wknd/osgiconfig/config.publish**
-1. Create OSGI configuration file named **com.adobe.acs.commons.http.headers.impl.DispatcherMaxAgeHeaderFilter~hello-world.cfg.json**
-1. Enter the below contents and save the file.
+1. Navigate to **ui.config/src/main/content/jcr_root/apps/wknd/osgiconfig/config.publish**
+1. Open ```org.apache.sling.dynamicinclude.Configuration~hello-world.cfg.json```
+1. Edit the file by adding a setting for **include-filter.config.ttl** with a value of 120 (seconds)
+1. Adjust the **include-filter.config.selector** by removing the **nocache** selector value. The file will now look similar to below:
 
     ```json
     {
-      "filter.pattern":[
-        "/content/wknd/(.*)_jcr_content(.*)/helloworld.html"
+      "include-filter.config.resource-types":[
+        "wknd/components/helloworld"
       ],
-      "max.age": 120
+      "include-filter.config.enabled":true,
+      "include-filter.config.path":"/content",
+      "include-filter.config.required_header":"Server-Agent=Communique-Dispatcher",
+      "include-filter.config.include-type":"JSI",
+      "include-filter.config.selector":"",
+      "include-filter.config.ttl": 120,
+      "include-filter.config.extension":"html",
+      "include-filter.config.add_comment":true,
+      "include-filter.config.rewrite":true,
+      "include-filter.config.appendSuffix":true,
+      "include-filter.config.ignoreUrlParams=":[
+        ""
+      ]
     }
-    ```
 
-1. In the above configuration
-    * The TTL is being set to 120 seconds (2 minutes)
-    * A filter pattern is set to match instances of the helloworld component under a page's content node (_jcr_content)
-1. Now we must adjust the SDI configuration for this compponent. Edit **ui.config/src/main/content/jcr_root/apps/wknd/osgiconfig/config.publish/org.apache.sling.dynamicinclude.Configuration~content.cfg.json**
-    * Remove the **nocache** value from selector property to match:
-
-    ```json
-    "include-filter.config.selector":"",
     ```
 
 1. Run a build (or export using VS Code plugin) with these updated configurations to publish using the command ```mvn clean install -PautoInstallSinglePackagePublish```
