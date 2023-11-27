@@ -1,0 +1,36 @@
+- group_config:
+
+  - annotations-editor:
+
+    - name: Annotations Editor
+      isMemberOf: contributor
+      members: 
+      path: a
+
+- ace_config:
+
+  - annotations-editor:
+
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:addChildNodes
+      repGlob: "*/jcr:content*"
+      
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:all
+      repGlob: "*/cq:annotations*"
+
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:all
+      repGlob: "*/jcr:content/cq:lastModified"
+
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:all
+      repGlob: "*/jcr:content/cq:lastModifiedBy"

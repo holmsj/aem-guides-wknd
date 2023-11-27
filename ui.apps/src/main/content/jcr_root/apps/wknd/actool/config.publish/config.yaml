@@ -9,7 +9,7 @@
 
 - ace_config:
 
-    - wknd-members-acl-example:
+    - wknd-members-actool-example:
 
        - path: /content/cq:tags
          permission: allow
