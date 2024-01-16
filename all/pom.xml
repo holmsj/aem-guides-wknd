@@ -64,6 +64,11 @@
                             <isAllVersionsFilter>true</isAllVersionsFilter>
                         </embedded>
                         <embedded>
+                            <groupId>org.apache.sling</groupId>
+                            <artifactId>org.apache.sling.dynamic-include</artifactId>
+                            <target>/apps/wknd-vendor-packages/content/install</target>
+                        </embedded>
+                        <embedded>
                             <groupId>com.adobe.aem.guides</groupId>
                             <artifactId>aem-guides-wknd.ui.apps</artifactId>
                             <type>zip</type>
