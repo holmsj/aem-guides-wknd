@@ -134,62 +134,10 @@ Include conf.d/variables/custom.vars
     ErrorDocument 503 ${500_PAGE}
     ErrorDocument 504 ${500_PAGE}
     
-    ## Default Fastly Cache Settings for AEM - V20220414
-    # Theme Sources via Clientlib: cache mutable resources for max 24h on CDN and background refresh after 12h to avoid MISS
-    <LocationMatch "^/etc\.clientlibs/.*\.(?i:json|png|gif|webp|jpe?g|svg)$">
-        Header set Cache-Control "max-age=43200,stale-while-revalidate=43200,stale-if-error=43200,public" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    # Theme Sources via Clientlib: long-term caching (30 days) for immutable URLs, background refresh to avoid MISS
-    <LocationMatch "^/etc\.clientlibs/.*\.(?i:js|css|ttf|woff2)$">
-        Header set Cache-Control "max-age=2592000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    # HTML pages: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS, also incl. requests with query parameter
-    # Cache-Control headers will always be added so it is important to ensure that matching html pages under /content/ are intended to be public
-    <LocationMatch "^/content/.*\.html$">
+    <LocationMatch "*">
         Header unset Cache-Control
-        Header always set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
-        Header always set Surrogate-Control "stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    <LocationMatch "^/content/wknd/(.*)/magazine(.*).html$">
-        Header unset Cache-Control
-        Header always set Cache-Control "private"
-    </LocationMatch>
-    # Content Services/Sling Model Exporter: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS
-    <LocationMatch "^/content/.*\.model\.json$">
-        Header set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
-        Header set Surrogate-Control "stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    # Core Component Search Component: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS, also incl. requests with query parameter
-    <LocationMatch "^/content/.*\.searchresults\.json.*">
-        Header always set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
-        Header always set Surrogate-Control "stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    # Core Component Image Component: long-term caching (30 days) for immutable URLs, background refresh to avoid MISS
-    <LocationMatch "^/content/.*\.coreimg.*\.(?i:jpe?g|png|gif|svg)$">
-        Header set Cache-Control "max-age=2592000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    # Images/Video from DAM: cache mutable resources for max 24h on CDN and background refresh after 12h to avoid MISS
-    <LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|js|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
-        Header set Cache-Control "max-age=43200,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    # ContextHub
-    <LocationMatch "^/etc/cloudsettings.kernel.js.*">
-        Header always set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    <LocationMatch "^/conf/.*/settings/wcm/segments.seg.js$">
-        Header set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
-        Header set Age 0
-    </LocationMatch>
-    <LocationMatch "^/content/.*/_jcr_content/contexthub.pagedata.json$">
-        Header set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
+        Header always set Surrogate-Control "private, no-cache, no-store"
+        Header always set cache-Control "private, no-cache, no-store"
         Header set Age 0
     </LocationMatch>
 </VirtualHost>
