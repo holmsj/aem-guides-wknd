@@ -49,11 +49,13 @@
                 <artifactId>filevault-package-maven-plugin</artifactId>
                 <configuration>
                     <properties>
+                        <!-- AC Tool install hook present to match Netcentric AEMaaCS Installation guidance -->
+                        <installhook.actool.class>biz.netcentric.cq.tools.actool.installhook.AcToolInstallHook</installhook.actool.class>
                         <cloudManagerTarget>none</cloudManagerTarget>
                     </properties>
                     <group>com.adobe.aem.guides</group>
                     <name>aem-guides-wknd.ui.apps</name>
-                    <packageType>application</packageType>
+                    <packageType>mixed</packageType>
                     <repositoryStructurePackages>
                         <repositoryStructurePackage>
                             <groupId>com.adobe.aem.guides</groupId>
@@ -61,6 +63,12 @@
                         </repositoryStructurePackage>
                     </repositoryStructurePackages>
                     <dependencies>
+                        <!--Netcentric ACL Tool -->
+                        <dependency>
+                            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                            <artifactId>accesscontroltool-package</artifactId>
+                            <classifier>cloud</classifier>
+                        </dependency>
                     </dependencies>
                 </configuration>
             </plugin>
@@ -142,6 +150,22 @@
             <artifactId>org.apache.sling.scripting.sightly.runtime</artifactId>
             <version>1.2.4-1.4.0</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- Netcentric ACL Tool -->
+        <dependency>
+            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+            <artifactId>accesscontroltool-package</artifactId>
+            <classifier>cloud</classifier>
+            <type>content-package</type>
+            <scope>provided</scope>
+            <version>${netcentric.actool}</version>
+        </dependency>
+        <!--Oak Index for Netcentric ACL Tool -->
+        <dependency>
+            <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+            <artifactId>accesscontroltool-oakindex-package</artifactId>
+            <classifier>cloud</classifier>
+            <type>zip</type>
         </dependency>
     </dependencies>
 </project>

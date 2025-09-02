@@ -1,0 +1,151 @@
+- group_config:
+  
+  # This is our AEM group for which permissions are set via ace_config section below.
+  - annotations-editor-aem:
+    - name: Annotations Editor (AEM)
+      isMemberOf: contributor
+      members: 
+      path: a
+
+  # This is a group expected to be created within IMS, either directly or via sync from IDP. It is synced to
+  # AEM when members of the group log in for the first time.
+  # It is loosely coupled by membership to the above AEM group. This allows more future flexibility
+  # and greater ability to mix and match AEM groups with their associated permissions.
+  - wknd-content-reviewers:
+    - isMemberOf: annotations-editor-aem
+      externalId: wknd-content-reviewers;ims
+      path: w
+
+  - wknd-standard-authors:
+    - name: WKND Standard Authors
+      path: w
+
+  - wknd-authors-members:
+    - name: WKND Authors - Members Section
+      path: w
+
+- ace_config:
+
+  # These permissions allow the user to add annotations (comments) to AEM pages.
+  - annotations-editor-aem:
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:addChildNodes
+      repGlob: "*/jcr:content*"
+      
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:all
+      repGlob: "*/cq:annotations*"
+
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:all
+      repGlob: "*/jcr:content/cq:lastModified"
+
+    - path: /content
+      permission: allow
+      actions: 
+      privileges: jcr:all
+      repGlob: "*/jcr:content/cq:lastModifiedBy"
+
+  # Define authoring groups and ACLs for WKND members-only section
+  - wknd-standard-authors:
+    # Baseline authoring permissions for WKND English site section
+    - path: /content/wknd/language-masters/en
+      permission: allow
+      actions:
+      privileges: jcr:read
+
+    - path: /content/wknd/language-masters/en
+      permission: allow
+      actions:
+      privileges: jcr:modifyProperties
+      repGlob: "*/jcr:content*"
+
+    - path: /content/wknd/language-masters/en
+      permission: allow
+      actions:
+      privileges: jcr:addChildNodes,jcr:removeNode
+
+    # Restrict standard authors from editing under members-only
+    - path: /content/wknd/language-masters/en/magazine/members-only
+      permission: deny
+      actions:
+      privileges: jcr:modifyProperties
+      repGlob: "*/jcr:content*"
+
+    - path: /content/wknd/language-masters/en/magazine/members-only
+      permission: deny
+      actions:
+      privileges: jcr:addChildNodes,jcr:removeNode
+
+    # DAM: deny writes under future/actual members-only subtree
+    - path: /content/dam/wknd-shared/en/magazine
+      permission: deny
+      actions:
+      privileges: jcr:modifyProperties,jcr:addChildNodes,jcr:removeNode
+      repGlob: "members-only"
+
+    - path: /content/dam/wknd-shared/en/magazine
+      permission: deny
+      actions:
+      privileges: jcr:modifyProperties,jcr:addChildNodes,jcr:removeNode
+      repGlob: "members-only/**"
+
+  - wknd-authors-members:
+    # Members-only authors can edit members-only area
+    - path: /content/wknd/language-masters/en/magazine/members-only
+      permission: allow
+      actions:
+      privileges: jcr:read
+
+    - path: /content/wknd/language-masters/en/magazine/members-only
+      permission: allow
+      actions:
+      privileges: jcr:modifyProperties
+      repGlob: "*/jcr:content*"
+
+    - path: /content/wknd/language-masters/en/magazine/members-only
+      permission: allow
+      actions:
+      privileges: jcr:addChildNodes,jcr:removeNode
+
+    # Give same baseline edit perms outside members-only as standard authors
+    - path: /content/wknd/language-masters/en
+      permission: allow
+      actions:
+      privileges: jcr:read
+
+    - path: /content/wknd/language-masters/en
+      permission: allow
+      actions:
+      privileges: jcr:modifyProperties
+      repGlob: "*/jcr:content*"
+
+    - path: /content/wknd/language-masters/en
+      permission: allow
+      actions:
+      privileges: jcr:addChildNodes,jcr:removeNode
+
+    # DAM: allow writes in members-only subtree
+    - path: /content/dam/wknd-shared/en/magazine
+      permission: allow
+      actions:
+      privileges: jcr:read
+
+    - path: /content/dam/wknd-shared/en/magazine
+      permission: allow
+      actions:
+      privileges: jcr:modifyProperties,jcr:addChildNodes,jcr:removeNode
+      repGlob: "members-only"
+
+    - path: /content/dam/wknd-shared/en/magazine
+      permission: allow
+      actions:
+      privileges: jcr:modifyProperties,jcr:addChildNodes,jcr:removeNode
+      repGlob: "members-only/**"
+

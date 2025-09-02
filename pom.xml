@@ -66,6 +66,7 @@
         <wknd-shared.version>3.1.0</wknd-shared.version>
         <wknd-shared.65.version>2.2.2</wknd-shared.65.version>
         <aemanalyser.version>1.6.6</aemanalyser.version>
+        <netcentric.actool>4.0.0</netcentric.actool>
     </properties>
 
     <organization>
@@ -787,6 +788,24 @@ Bundle-DocURL:
                 <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
                 <version>${wknd-shared.version}</version>
                 <type>zip</type>
+            </dependency>
+
+            <!--Netcentric ACL Tool -->
+            <dependency>
+                <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                <artifactId>accesscontroltool-package</artifactId>
+                <!-- Remove below classifier for 6.5 on-premise -->
+                <classifier>cloud</classifier>
+                <type>content-package</type>
+                <version>${netcentric.actool}</version>
+            </dependency>
+            <!--Oak Index for netcentric ACL Tool -->
+            <dependency>
+                <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
+                <artifactId>accesscontroltool-oakindex-package</artifactId>
+                <classifier>cloud</classifier>
+                <type>zip</type>
+                <version>${netcentric.actool}</version>
             </dependency>
 
             <!-- Testing -->
