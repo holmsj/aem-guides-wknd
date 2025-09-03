@@ -53,18 +53,12 @@ public class ACLMembersOnlyIT {
     private static final String DAM_MAGAZINE = "/content/dam/wknd-shared/en/magazine";
     private static final String DAM_MEMBERS_ONLY = DAM_MAGAZINE + "/members-only";
 
+    private static final long READINESS_TIMEOUT_MS = Long.getLong("it.acl.readinessTimeoutMs", 360000L); // 6 minutes default for CI
+
     @BeforeClass
     public static void setup() throws Exception {
         adminAuthor = cqBaseClassRule.authorRule.getAdminClient(CQClient.class);
         adminSecurity = cqBaseClassRule.authorRule.getAdminClient(CQSecurityClient.class);
-
-        // Ensure groups exist (create if missing)
-        if (!AbstractAuthorizable.exists(adminSecurity, STANDARD_GROUP_ID)) {
-//            Group.createGroup(adminSecurity, STANDARD_GROUP_ID, null, "WKND Standard Authors", null);
-        }
-        if (!AbstractAuthorizable.exists(adminSecurity, MEMBERS_GROUP_ID)) {
-//            Group.createGroup(adminSecurity, MEMBERS_GROUP_ID, null, "WKND Authors - Members Section", null);
-        }
 
         // Create users and add them to groups
         if (!User.exists(adminSecurity, STANDARD_USER_ID)) {
@@ -82,6 +76,9 @@ public class ACLMembersOnlyIT {
 
         standardGroup.addMember(standardUser, SC_OK);
         membersGroup.addMember(membersUser, SC_OK);
+
+        // Wait briefly for AC Tool to apply policies and groups to be visible
+        awaitAclReadiness();
     }
 
     @AfterClass
@@ -91,6 +88,44 @@ public class ACLMembersOnlyIT {
         tryDeletePage(adminAuthor, MEMBERS_ONLY_PATH + "/it-acl-members");
         tryDeletePage(adminAuthor, BASE_PATH + "/magazine/it-acl-control");
         // Users are left in place for repeatability; group membership remains.
+    }
+
+    private static void awaitAclReadiness() throws InterruptedException {
+        long start = System.currentTimeMillis();
+        long deadline = start + READINESS_TIMEOUT_MS;
+        int sleepMs = 500;
+        final int maxSleepMs = Integer.getInteger("it.acl.maxSleepMs", 30000); // ramp up to 30s by default
+        long lastLog = 0;
+        System.out.println("[ACLMembersOnlyIT] Waiting for ACL readiness (timeout=" + READINESS_TIMEOUT_MS + "ms, maxSleep=" + maxSleepMs + "ms)...");
+        while (true) {
+            try {
+                // Group presence (use SecurityClient to check by authorizableId)
+                if (!AbstractAuthorizable.exists(adminSecurity, MEMBERS_GROUP_ID)) {
+                    throw new IllegalStateException("Group not yet present: " + MEMBERS_GROUP_ID);
+                }
+                // Content exists (base WKND section and specific pages used by this test)
+                adminAuthor.doGet(BASE_PATH + ".json", SC_OK);
+                adminAuthor.doGet(OUTSIDE_PAGE + ".json", SC_OK);
+                adminAuthor.doGet(MEMBERS_PAGE + ".json", SC_OK);
+                // Note: do not check rep:policy directly (may not be readable via JSON rendering)
+                System.out.println("[ACLMembersOnlyIT] ACL readiness satisfied in " + (System.currentTimeMillis() - start) + "ms");
+                return; // ready
+            } catch (Exception e) {
+                long now = System.currentTimeMillis();
+                if (now - lastLog >= 1000) {
+                    System.out.println("[ACLMembersOnlyIT] Not ready yet (elapsed=" + (now - start) + "ms, nextSleep=" + sleepMs + "ms, timeout=" + READINESS_TIMEOUT_MS + "ms)...");
+                    lastLog = now;
+                }
+                if (now > deadline) {
+                    System.out.println("[ACLMembersOnlyIT] Gave up waiting after " + (now - start) + "ms (timeout=" + READINESS_TIMEOUT_MS + "ms); proceeding with tests.");
+                    return; // give up; tests will indicate if not ready
+                }
+                Thread.sleep(sleepMs);
+                if (sleepMs < maxSleepMs) {
+                    sleepMs = Math.min(sleepMs + 250, maxSleepMs);
+                }
+            }
+        }
     }
 
     private static void tryDeletePage(CQClient client, String path) {
