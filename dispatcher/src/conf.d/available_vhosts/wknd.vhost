@@ -161,6 +161,13 @@ Include conf.d/variables/custom.vars
         Header always set Surrogate-Control "stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
+
+    # Members-only: do not cache at browser or CDN (no permission-sensitive caching in this POC)
+    <LocationMatch "^/content/wknd/.*/magazine/members-only(?:/.*)?$">
+        Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
+    </LocationMatch>
     # Content Services/Sling Model Exporter: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS
     <LocationMatch "^/content/.*\.model\.json$">
         Header set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"

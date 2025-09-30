@@ -1,0 +1,19 @@
+- group_config:
+  - wkndmembers:
+    - name: WKND Members
+      path: w
+
+- user_config:
+  - testuser:
+    - name: Test User
+      password: testuser
+      isMemberOf: wkndmembers
+      path: t
+
+# Notes:
+# - This publish runmode config demonstrates AC Tool creating a user on publish
+#   and assigning it to the out-of-the-box WKND closed user group (wkndmembers)
+#   which protects the members-only pages via CUG policies.
+# - The short path key "t" organizes the user under /home/users/t/...
+# - Credentials: username "testuser", password "testuser".
+

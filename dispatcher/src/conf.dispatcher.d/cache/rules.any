@@ -5,3 +5,9 @@
 #
 
 $include "./default_rules.any"
+
+# Do not cache members-only protected pages (permission-sensitive content)
+/1000 {
+    /glob "/content/wknd/**/magazine/members-only[./]*"
+    /type "deny"
+}

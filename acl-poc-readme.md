@@ -11,6 +11,8 @@
 - Groups:
   - `wknd-standard-authors`: baseline, blocked in members-only.
   - `wknd-authors-members`: allowed in members-only.
+- Publish demo user:
+  - `testuser` with password `testuser` is created on publish via AC Tool and added to `wkndmembers` (CUG group) to access members-only pages.
 - Pages:
   - `/content/wknd/language-masters/en/magazine/members-only`: deny standard authors; allow members-authors (modify/add/remove and jcr:content props).
 - DAM parity (proactive):
@@ -61,6 +63,10 @@
   - Author-side “can/can’t” checks:
     - Pages: property set on inside/outside paths.
     - DAM: small asset upload under the scoped folder.
+  - Publish-side demo:
+    - Log into publish as `testuser` / `testuser`.
+    - Access a members-only page, e.g. `/content/wknd/language-masters/en/magazine/members-only/alaskan-adventure.html`.
+    - Expect access due to `wkndmembers` CUG membership.
   - Check AC Tool logs: confirm “SUCCESS (X authorizables/Y ACLs changed)” or no-op.
 
 - Rollback
