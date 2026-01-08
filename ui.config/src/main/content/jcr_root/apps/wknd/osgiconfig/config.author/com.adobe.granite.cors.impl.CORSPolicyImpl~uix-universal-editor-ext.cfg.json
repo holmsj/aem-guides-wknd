@@ -1,0 +1,38 @@
+{
+  "alloworigin": [
+    ""
+  ],
+  "alloworiginregexp": [
+    "https://localhost:9080",
+    "https://localhost:.*",
+    "https://.*\\.adobeio-static\\.net",
+    "https://experience\\.adobe\\.com",
+    "https://.*\\.adobe\\.com",
+    "https://.*\\.adobe\\.net"
+  ],
+  "allowedpaths": [
+    "/content/.*\\.json",
+    "/content/dam/.*"
+  ],
+  "supportedheaders": [
+    "Origin",
+    "Accept",
+    "X-Requested-With",
+    "Content-Type",
+    "Access-Control-Request-Method",
+    "Access-Control-Request-Headers",
+    "Authorization",
+    "authorization"
+  ],
+  "supportedmethods": [
+    "GET",
+    "HEAD",
+    "OPTIONS"
+  ],
+  "maxage:Integer": 1800,
+  "supportscredentials": true,
+  "exposedheaders": [
+    ""
+  ]
+}
+
